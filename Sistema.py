@@ -3,7 +3,8 @@ class Produto:  # O produto tem título, valor e desconto.
         self.titulo = None
         self.valor = 0
         self.desconto = 0
-
+    
+    # Métodos para inserir ou visualizar os dados de um produto
     def get_titulo(self):
         return self.titulo
 
@@ -29,10 +30,10 @@ class Produto:  # O produto tem título, valor e desconto.
         print(f'Valor final: R${self.get_valor():.2f}')
 
 
-class Livro(Produto):  # O livro tem um atributo especial (autor).
+class Livro(Produto):  # Herda os atributos da classe Produto
     def __init__(self):
-        self.autor = None
-        super().__init__()
+        self.autor = None  # atributo especial desta classe
+        super().__init__()  # recebendo os atributos da classe pai
 
     def get_autor(self):
         return self.autor
@@ -46,16 +47,16 @@ class Livro(Produto):  # O livro tem um atributo especial (autor).
         return preco
 
     def descreve_produto(self):
-        print(f'Livro: {super().get_titulo()}')
+        print(f'Livro: {super().get_titulo()}')  # uso de um método herdado da classe pai
         print(f'Autor(a): {self.get_autor()}')
         print(f'Valor: R${super().get_valor():.2f}')
         print(f'Desconto: {super().get_desconto()}%')
         print(f'Valor final: R${self.get_valor():.2f}')
 
 
-class CD(Produto):  # O CD tem um atributo especial (artista).
+class CD(Produto):
     def __init__(self):
-        self.artista = None
+        self.artista = None  # atributo especial desta classe
         super().__init__()
 
     def get_artista(self):
@@ -77,9 +78,9 @@ class CD(Produto):  # O CD tem um atributo especial (artista).
         print(f'Valor final: R${self.get_valor():.2f}')
 
 
-class DVD(Produto):  # O DVD tem um atributo especial (duração).
+class DVD(Produto):
     def __init__(self):
-        self.duracao = None
+        self.duracao = None  # atributo especial desta classe
         super().__init__()
 
     def get_duracao(self):
@@ -102,6 +103,11 @@ class DVD(Produto):  # O DVD tem um atributo especial (duração).
 
 
 # Os produtos devem ser colocados manualmente.
+'''
+De acordo com o enunciado da questão, os livros tem 10% de desconto,
+os CD's tem 15% e os DVD's tem 20%.
+Os demais produtos não têm desconto.
+'''
 produto_1 = Produto()
 produto_1. set_titulo('Ferro de Passar a Vapor 1200W')
 produto_1.set_valor(100)
@@ -148,6 +154,7 @@ dvd_2.set_duracao('2:30')
 dvd_2.set_valor(60)
 dvd_2.set_desconto(20)
 
+# inserção de cada produto na lista. Aceito dicas de como otimizar essa parte
 lista = []
 lista.append(produto_1)
 lista.append(produto_2)
@@ -158,7 +165,7 @@ lista.append(cd_2)
 lista.append(dvd_1)
 lista.append(dvd_2)
 
-
+# Classe onde será feita a interação com o usuário
 class Menu:
     def __init__(self):
         self.lista = []
